@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>실습실 빈자리 찾기</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/client.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>실습실 빈자리 찾기</h1>
+      <p>교내 실습실 네 곳의 예시 좌석 현황입니다. 상세 JSON에서 사용 중인 좌석과 보유 장비를 확인할 수 있습니다.</p>
+    </header>
+    <form id="filters">
+      <label>건물
+        <select name="building">
+          <option value="">전체 건물</option>
+          <option value="ENG">공학관</option>
+          <option value="SCI">자연관</option>
+        </select>
+      </label>
+      <label>최소 빈 좌석 수
+        <input type="number" name="minFree" min="0" step="1" value="0" required>
+      </label>
+      <button>조회</button>
+    </form>
+    <section aria-labelledby="result">
+      <h2 id="result" role="status">조회 중…</h2>
+      <p class="request"><code id="request"></code></p>
+      <table id="rooms" hidden>
+        <thead><tr><th scope="col">실습실</th><th scope="col">건물</th><th scope="col">빈 좌석 / 정원</th><th scope="col">상세</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+  <template id="row">
+    <tr>
+      <th scope="row"><span class="room-name"></span><small></small></th>
+      <td class="building"></td>
+      <td class="seats"></td>
+      <td><a>JSON 보기</a></td>
+    </tr>
+  </template>
+</body>
+</html>
